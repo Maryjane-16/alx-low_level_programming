@@ -1,36 +1,25 @@
 #include "main.h"
 
-#include <stdlib.h>
 /**
- * create_array - create array of size size and assign char c
- * @size: size of array
- * @c: char to assign
- * Description: creat array of size size and assign char c
- * Return: pointer to array, NULL if fail
+ * binary_to_uint - Converts a binary number to an unsigned int.
+ * @b: A pointer to a string of 0 and 1 chars.
+ *
+ * Return: If b is NULL or contains chars not 0 or 1 - 0.
+ *         Otherwise - the converted number.
  */
-
-char *create_array(unsigned int size, char c)
-
+unsigned int binary_to_uint(const char *b)
 {
+	int i;
+	unsigned int dec_val = 0;
 
-	char *str;
+	if (!b)
+		return (0);
 
-	unsigned int i;
-
-
-
-	str = malloc(sizeof(char) * size);
-
-	if (size == 0 || str == NULL)
-
-		return (NULL);
-
-
-
-	for (i = 0; i < size; i++)
-
-		str[i] = c;
-
-	return (str);
-
+	for (i = 0; b[i]; i++)
+	{
+		if (b[i] < '0' || b[i] > '1')
+			return (0);
+		dec_val = 2 * dec_val + (b[i] - '0');
+	}
+	return (dec_val);
 }
