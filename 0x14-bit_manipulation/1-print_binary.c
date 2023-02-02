@@ -1,52 +1,13 @@
-#include <stdio.h>
-
-#include <stdlib.h>
-
 #include "main.h"
+
 /**
- * _strdup - duplicate to new memory space location
- * @str: char
- * Return: 0
+ * print_binary - Prints the binary representation of a number.
+ * @n: The number to be printed in binary.
  */
-
-char *_strdup(char *str)
-
+void print_binary(unsigned long int n)
 {
+	if (n > 1)
+		print_binary(n >> 1);
 
-	char *aaa;
-
-	int i, r = 0;
-
-
-
-	if (str == NULL)
-
-		return (NULL);
-
-	i = 0;
-
-	while (str[i] != '\0')
-
-		i++;
-
-
-
-	aaa = malloc(sizeof(char) * (i + 1));
-
-
-
-	if (aaa == NULL)
-
-		return (NULL);
-
-
-
-	for (r = 0; str[r]; r++)
-
-		aaa[r] = str[r];
-
-
-
-	return (aaa);
-
+	_putchar((n & 1) + '0');
 }
